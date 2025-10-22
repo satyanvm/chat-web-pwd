@@ -9,16 +9,36 @@
     "check-types": "turbo run check-types"
   },
   "devDependencies": {
+    "@types/jsonwebtoken": "^9.0.10",
     "prettier": "^3.6.2",
     "turbo": "^2.5.8",
     "typescript": "5.9.2"
   },
+  "workspace": [
+    "apps/*",
+    "packages/*"
+  ],
   "engines": {
     "node": ">=18"
   },
-  "packageManager": "npm@11.6.0",
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ]
+  "packageManager": "pnpm@9.1.0",
+  "dependencies": {
+    "@types/axios": "^0.9.36",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
+    "@types/navigation": "^5.1.0",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "@types/ws": "^8.18.1",
+    "axios": "^1.12.2",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "navigation": "^6.3.0",
+    "nex": "^2.0.22",
+    "next": "^15.5.5",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "ws": "^8.18.3"
+  }
 }
