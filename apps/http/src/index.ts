@@ -1,7 +1,6 @@
 import express from "express"
 import { prismaClient } from "db/client"
-import jwt from "jsonwebtoken"
-import { JWT_SECRET } from "./config.js"
+import * as jwt from "jsonwebtoken"
 import { middleware } from "./middleware.js"
 import cors from "cors";
 
@@ -35,12 +34,12 @@ app.post('signin', async (req,res) => {
         }
     })
     if(!user){
-        console.log("no user found")
+        console.log("no user found");
         return;
     }
     const userId = user.id;
     const JWT_SECRET = process.env.JWT_SECRET!;
-    const token = jwt.sign(userId, JWT_SECRET)
+    const token = jwt.sign(userId, JWT_SECRET);
 
     res.json({
         token

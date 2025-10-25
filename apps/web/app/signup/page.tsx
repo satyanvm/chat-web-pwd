@@ -45,7 +45,7 @@ export default function signup(){
                     //@ts-ignore
                         const {token} = response.data;
                         localStorage.setItem('authToken', token);
-                        router.push('/chat');
+                        router.push('/signin');
                    }
                    return response.data;
                 } catch(e){

@@ -7,10 +7,10 @@ export default function JoinRom() {
 
     const handleSubmit = () => {
         if (roomId) {
-            window.location.href = `http://localhost:3000/chat/${roomId}`
+            window.location.href = `http://localhost:3000/room/${roomId}`
         } else {
             console.log("Room id is not avaialable, try again");
-            return;
+            return; 
         }
     }
     return (

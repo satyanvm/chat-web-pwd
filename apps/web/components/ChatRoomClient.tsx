@@ -3,31 +3,34 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useSocket } from "../hooks/useSocket";
+import { prismaClient } from "db/client";
 
-export function ChatRoomClient({messages, id}:  { messages: { type: string; x: Number; y: Number; height: Number, width: Number }[];
-id: Number
+export default function ChatRoomClient({userId, messages, id}:  { userId: number
+messages: string[];
+id: number;
 } ){ 
 
 const { socket, loading} = useSocket();
 const [chats, setChats] = useState(messages);
 const [currentMessage, setCurrentMessage] = useState("");
-console.log("ChatRoomClient rendered");
-useEffect(() => {
-    console.log("useEffect triggered");
-    if(socket && !loading){
 
+useEffect(() => {
+    if(socket && !loading){
         socket.send(JSON.stringify({
             type: "join_room",
             roomId: id
-        }))
+        }));
+
         socket.onmessage = (event) => {
             const parsedData = JSON.parse(event.data);
-            console.log("inside socket.onmessage and before if chat")
             if(parsedData.type === "chat"){
-                console.log("inside the socket.onmessage and if chat statement");
-    setChats(c => [...c, parsedData]);
-
+                setChats(c => [...c, parsedData]);
             } 
+            prismaClient.chat.create({
+                roomId: id,
+                userId: userId,
+                message: parsedData
+            })
         }
 
     }
