@@ -37,14 +37,14 @@ export default function SignIn() {
                 onChange={handlePasswordChange}
                 />
                 <Button children="Submit" appName="submit" onClick={async () => {
-                    try{
+                    try{ 
                    const response = await axios.post('/signin', {
                     username: username,
                     password: password
-                   });
+                   }); 
                    if(response && response.status == 200){
                     //@ts-ignore
-                        const {token} = response.data;
+                        const {token} = response.data; 
                         localStorage.setItem('authToken', token);
                         router.push('/enter-room');
                    }

@@ -70,7 +70,11 @@ importers:
         specifier: 5.9.2
         version: 5.9.2
 
-  apps/http: {}
+  apps/http:
+    devDependencies:
+      db:
+        specifier: workspace:*
+        version: link:../../packages/db
 
   apps/web:
     dependencies:

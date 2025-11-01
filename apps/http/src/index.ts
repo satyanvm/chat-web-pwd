@@ -1,13 +1,12 @@
-import express from "express"
+import * as express from "express"
 import { prismaClient } from "db/client"
 import * as jwt from "jsonwebtoken"
-import { middleware } from "./middleware.js"
 import cors from "cors";
 
-const app = express() 
+const app = express.default();
 
-app.use(express.json())
-app.use(cors())
+app.use(express.default());
+app.use(cors());
 
 app.post('/signup', async (req,res) => {
     const username = req.body.username;
@@ -44,6 +43,9 @@ app.post('signin', async (req,res) => {
     res.json({
         token
     }) 
-})
+});
+
+
+
 
 app.listen(3001);

@@ -61,7 +61,7 @@ wss.on('connection', function connection(ws: WebSocket, request: any){
             rooms: parsedData.roomId
         })
     }
-    if(messageType == 'message'){
+    if(messageType == 'chat'){
         users.forEach(user => {
             if(user.rooms.includes(parsedData.roomId)){
                 user.ws.send(JSON.stringify({
